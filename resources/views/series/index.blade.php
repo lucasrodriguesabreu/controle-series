@@ -1,9 +1,7 @@
 @extends('layout')
-
 @section('cabecalho')
 Séries
 @endsection
-
 @section('conteudo')
 
 @if(!empty($mensagem))
