@@ -15,6 +15,8 @@ class CriarTabelaSeries extends Migration
     {
         Schema::create('series', function (Blueprint $table){
             $table->string('nome');
+            //Se fosse necessário inserir coluna para hora de atualização e criação do dado
+            //$table->timestamps();
         });
     }
 
