@@ -1,7 +1,9 @@
 @extends('layout')
+
 @section('cabecalho')
 Séries
 @endsection
+
 @section('conteudo')
 
 @if(!empty($mensagem))
@@ -18,11 +20,11 @@ Séries
         {{ $serie->nome }}
 
         <span class="d-flex">
-            <a href="/series/{{$serie->id}}/temporadas" class="btn btn-info btn-sm mr-1">
+            <a href="/series/{{ $serie->id }}/temporadas" class="btn btn-info btn-sm mr-1">
                 <i class="fas fa-external-link-alt"></i>
             </a>
             <form method="post" action="/series/{{ $serie->id }}"
-                onsubmit="return confirm('Tem certeza que deseja remover {{ addslashes($serie->nome) }}?')">
+                  onsubmit="return confirm('Tem certeza que deseja remover {{ addslashes($serie->nome) }}?')">
                 @csrf
                 @method('DELETE')
                 <button class="btn btn-danger btn-sm">
