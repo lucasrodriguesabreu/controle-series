@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Episodio;
 use App\Http\Requests\SeriesFormRequest;
 use App\Serie;
+use App\User;
 use App\Services\CriadorDeSerie;
 use App\Services\RemovedorDeSerie;
 use App\Temporada;
@@ -37,6 +38,20 @@ class SeriesController extends Controller
             $request->qtd_temporadas,
             $request->ep_por_temporada
         );
+
+        $users = User::all();
+        foreach ($users as $user)
+        {
+            $email = new \App\Mail\NovaSerie(
+                $request->nome,
+                $request->qtd_temporadas,
+                $request->ep_por_temporada
+            );
+            $email->subject = 'Nova Série Adicionada';
+            \Illuminate\Support\Facades\Mail::to($user)->send($email);
+            sleep(5);
+        }
+
 
         $request->session()
             ->flash(
