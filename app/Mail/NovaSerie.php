@@ -10,9 +10,11 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 class NovaSerie extends Mailable
 {
     use Queueable, SerializesModels;
+
     public $nome;
     public $qtdTemporadas;
     public $qtdEpisodios;
+
     /**
      * Create a new message instance.
      *
